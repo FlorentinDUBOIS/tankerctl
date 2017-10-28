@@ -1,0 +1,15 @@
+language: go
+
+go:
+  - 1.9
+
+install:
+  - make install
+
+before_script:
+  - make dep
+
+script:
+  - make lint
+  - make format
+  - make release
