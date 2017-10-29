@@ -8,9 +8,9 @@ import (
 
 // Save metrics in a file
 func Save(path, name, metrics string) error {
-	if err := os.MkdirAll(path, os.ModeDir); err != nil {
+	if err := os.MkdirAll(path, 0755); err != nil {
 		return err
 	}
 
-	return ioutil.WriteFile(fmt.Sprintf("%s/%s", path, name), []byte(metrics), os.ModePerm)
+	return ioutil.WriteFile(fmt.Sprintf("%s/%s", path, name), []byte(metrics), 0744)
 }

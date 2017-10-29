@@ -1,0 +1,11 @@
+[Unit]
+Description = Export gasoline data as sensision metrics.
+After = tlp-init.service
+
+[Service]
+Type = oneshot
+RemainAfterExit = no
+ExecStart = /usr/bin/tankerctl scrape -o /var/tanker/scraped
+
+[Install]
+WantedBy = multi-user.target

@@ -1,0 +1,9 @@
+[Unit]
+Description = Run tanker every 10 minutes
+
+[Timer]
+OnCalendar = *-*-* *:0/10:00
+Persistent = true
+
+[Install]
+WantedBy = timers.target

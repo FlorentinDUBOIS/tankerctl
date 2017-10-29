@@ -7,7 +7,7 @@ import (
 )
 
 var (
-	semver  = "0.0.1"
+	semver  = "0.1.0"
 	githash = "HEAD"
 )
 
