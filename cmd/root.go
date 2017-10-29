@@ -26,4 +26,14 @@ func configure() {
 	} else {
 		log.SetLevel(log.InfoLevel)
 	}
+
+	viper.AddConfigPath("/etc/tankerctl")
+	viper.AddConfigPath("$HOME/.tankerctl")
+	viper.AddConfigPath(".")
+
+	viper.SetConfigName("config")
+
+	if err := viper.MergeInConfig(); err != nil {
+		log.Warn(err)
+	}
 }
