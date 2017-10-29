@@ -1,12 +1,30 @@
 # tankerctl
 
-Export gasoline data as [sensision](http://www.warp10.io/getting-started/#data-format) metrics.
+Export gasoline data as [sensision](http://www.warp10.io/getting-started/#data-format) metrics. These metrics will be consume by the [beamium](https://github.com/ovh/beamium) software.
 
 # Installation
 
 ## From GitHub release
 
-Coming soon :).
+Download files from Github release. 
+
+Install tankerctl software:
+
+```sh
+$ chmod +x tankerctl && sudo cp /usr/bin/
+```
+
+Set up configuration file in `/etc/tankerctl`:
+
+```sh
+$ sudo mkdir -p /etc/tankerctl && sudo cp config.toml /etc/tankerctl/
+```
+
+Put in place the systemd `service` and `timer`.
+
+```sh
+$ sudo cp tanker.* /etc/systemd/system
+```
 
 ## From source code
 
@@ -14,6 +32,26 @@ The installation from source is based on the `go` binary. So, you need to have a
 
 ```sh
 $ go get github.com/FlorentinDUBOIS/tankerctl
+```
+
+Install software:
+
+```sh
+$ sudo cp $(which tankerctl) /usr/bin
+```
+
+Set up configuration file in `/etc/tankerctl`:
+
+```sh
+$ sudo mkdir -p /etc/tankerctl && sudo curl https://raw.githubusercontent.com/FlorentinDUBOIS/tankerctl/master/config.toml > /etc/tankerctl/config.toml
+
+```
+
+Put in place the systemd `service` and `timer`.
+
+```sh
+$ sudo curl https://raw.githubusercontent.com/FlorentinDUBOIS/tankerctl/master/tanker.timer > /etc/systemd/system/tanker.timer
+$ sudo curl https://raw.githubusercontent.com/FlorentinDUBOIS/tankerctl/master/tanker.service > /etc/systemd/system/tanker.service
 ```
 
 # Usage
@@ -75,6 +113,19 @@ where `id` labels on price metrics correspond to:
 |4|GPLc|
 |5|E10|
 |6|SP98|
+
+## Usage with systemd
+
+Once installed tankerctl is able to run every 10 minutes using systemd for that enable and start systemd services.
+
+```sh
+$ sudo systemctl enable tanker.{service,timer}
+$ sudo systemctl start tanker.{service,timer}
+```
+
+These commands will enable tankerctl at startup as tanker service. It also create a timer that run the tanker service every ten minutes.
+
+Starts command are to enable it without reboot.
 
 # License
 
