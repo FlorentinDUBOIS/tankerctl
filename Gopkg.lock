@@ -32,6 +32,12 @@
   revision = "06020f85339e21b2478f756a78e295255ffa4d6a"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/paulrosania/go-charset"
+  packages = ["charset","data"]
+  revision = "621bb39fcc835dce592e682f5073025d0169587b"
+
+[[projects]]
   name = "github.com/pelletier/go-toml"
   packages = ["."]
   revision = "16398bac157da96aa88f98a2df640c7f32af1da2"
@@ -106,6 +112,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "4311fd96d4937a885eedd085a40661147a31d4aeae4bbcb2d00df7f52bbc8f1c"
+  inputs-digest = "6461b055e2641ada719f7e4b14e3a59a187519fadff50e92104fe62be914f133"
   solver-name = "gps-cdcl"
   solver-version = 1
