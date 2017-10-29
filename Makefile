@@ -1,14 +1,14 @@
 # project data
-NAME	 := tanker
+NAME	 := tankerctl
 HASH   := $(shell git rev-parse --verify HEAD)
-LFILES := tankerctl.go cmd/... core/...
-FILES  := tankerctl.go cmd core
+LFILES := $(NAME).go cmd/... core/...
+FILES  := $(NAME).go cmd core
 
 # compiler and compiler options
 CC 		 := go build
 DEP  	 := dep
 CFLAGS := -race
-DFLAGS := -ldflags "-X 'github.com/FlorentinDUBOIS/tankerctl/cmd.githash=$(HASH)'"
+DFLAGS := -ldflags "-X 'github.com/FlorentinDUBOIS/$(NAME)/cmd.githash=$(HASH)'"
 RM		 := rm -rf
 FORMAT := gofmt -s -w
 LINT   := gometalinter --deadline=180s --disable-all
@@ -16,11 +16,11 @@ GET 	 := go get -u
 
 .PHONY: release
 release:
-	$(CC) $(DFLAGS) -o build/release/$(NAME) tankerctl.go
+	$(CC) $(DFLAGS) -o build/release/$(NAME) $(NAME).go
 
 .PHONY: dev
 dev:
-	$(CC) $(CFLAGS) $(DFLAGS) -o build/debug/$(NAME) tankerctl.go
+	$(CC) $(CFLAGS) $(DFLAGS) -o build/debug/$(NAME) $(NAME).go
 
 .PHONY: install
 install:
