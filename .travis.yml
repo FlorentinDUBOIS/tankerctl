@@ -1,5 +1,4 @@
 language: go
-
 go:
   - 1.9
 
@@ -13,3 +12,22 @@ script:
   - make lint
   - make format
   - make release
+
+deploy:
+  provider: releases
+  skip_cleanup: true
+  branches:
+    only:
+      - master
+
+  api_key:
+    secure: h1Bmgg2PArsOKhIH3l4w2PIR9iFhRs2tk08yH2qz6SG4T/U6zWIJ/RYUNpUT+HzqcNFLmvpgvDyqGCGD5eHE7K/nXI+iJqVIRtL6ZZRi4kFeXWmIgMpzYi+SYZglEElyZ9Gbc6swukxMh6Xoh7qN514/vmAh9nqANKFMRoDO7TIt8GgtkfPAauRikHEWQL8WfbFfHzcYAVO/tQ3Ww4FYvwHbGuyINFwzrzutylUJwbTnJlwYoG6D5D8kaqvnmRawIDrIYM4CUAozm7fT2xAWk2464W4ioCjPPDArA6NA1teTMBpcZxxTrpmZiUNVxIKzkoweeGMfWqRh9BgGBgq4ZU1zYS5x+FaT9YTncCbPMtiCyaJd9ox+Io3Mq2Wx7cZuff8S3dCTahsn3Ciafx6zVBgTIi14frL6rvoVA/ehVO3T15dp+4DtowbhvBb9QGRCjfbzpLnHwnZSufqE7UfgOlX0Ij3DMUsTsJ4EyFLDO7nZ5jUspUCIeSNfEev5vuHmfhR71l3djTFzAj5rOhqjQCQ/HDLc1ufpqS0YLFrfQcuIlqX9Z6sZcMnfIjX+zEVW/q5QKYWB5tyN1RFQqimNJqg/tUph61Z+XdnXcb/rF0K0v+q2rKFfmYzGdzLL2KX9B4mVQq6LrkZc23U+K/dm62B94Zo/yCxn/nI4AptFmBc=
+
+  file_glob: true
+  file:
+    - "config.toml"
+    - "build/release/tankerctl"
+
+  on:
+    tags: true
+    repo: FlorentinDUBOIS/tankerctl
