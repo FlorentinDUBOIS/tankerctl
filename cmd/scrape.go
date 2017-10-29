@@ -3,11 +3,11 @@ package cmd
 import (
 	"bytes"
 	"encoding/xml"
+	"errors"
 	"net/http"
 	"strconv"
 	"strings"
 	"time"
-	"errors"
 
 	"github.com/FlorentinDUBOIS/tankerctl/core"
 	"github.com/paulrosania/go-charset/charset"
@@ -52,7 +52,7 @@ func scrape(cmd *cobra.Command, args []string) {
 
 		return
 	}
-	
+
 	sensisions := make([]string, 0)
 	for _, content := range contents {
 		container := &core.XMLContainer{}
