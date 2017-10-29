@@ -27,6 +27,8 @@ deploy:
   file:
     - "config.toml"
     - "build/release/tankerctl"
+    - "tanker.service"
+    - "tanker.timer"
 
   on:
     tags: true
