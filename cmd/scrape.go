@@ -52,6 +52,7 @@ func scrape(cmd *cobra.Command, args []string) {
 
 		return
 	}
+	
 	sensisions := make([]string, 0)
 	for _, content := range contents {
 		container := &core.XMLContainer{}
