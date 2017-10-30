@@ -11,7 +11,7 @@ Download files from Github release.
 Install tankerctl software:
 
 ```sh
-$ chmod +x tankerctl && sudo cp /usr/bin/
+$ chmod +x tankerctl && sudo cp tankerctl /usr/bin/
 ```
 
 Set up configuration file in `/etc/tankerctl`:
